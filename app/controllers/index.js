@@ -1,0 +1,1 @@
+exports.album = require('./album');
