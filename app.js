@@ -9,8 +9,8 @@ const path = require('path')
 
 // const index = require('./app/routes/index')
 // const users = require('./app/routes/users')
-const mount = require('mount-koa-routes');
-const multer = require('koa-multer');
+const mount = require('mount-koa-routes'); // 在动挂载路由
+const multer = require('koa-multer'); // 文件上传
 
 // error handler
 onerror(app)

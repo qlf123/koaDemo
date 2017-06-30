@@ -41,6 +41,22 @@ exports.albumSave = async(title, song_id, photos, cover, user_id) => {
   });
 };
 
+exports.albumUpdate = async(title, album_id) => {
+  models.album.update({
+    title: title
+  }, {
+    where:{
+      id:{
+        $like:album_id
+      }
+    }
+  }).then((res) => {
+    console.log('更新成功')
+  }).catch((err) => {
+    console.log(err)
+  })
+};
+
 exports.albumDel = async(id) => {
   await models.album.destroy({
     where:{

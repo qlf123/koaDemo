@@ -1,6 +1,8 @@
 'use strict';
 
 const Album = require('../service/album');
+const multer = require('koa-multer');
+const upload = multer({ dest: 'uploads/' });
 
 exports.list = async (ctx, next) => {
   let page = ctx.query.page || 1;
@@ -11,7 +13,7 @@ exports.list = async (ctx, next) => {
   ctx.body = albums;
 }
 
-exports.add = async (ctx, next) => {
+exports.save = async (ctx, next) => {
   console.log(ctx)
   let title = ctx.request.body.title
   console.log(title)
@@ -19,7 +21,8 @@ exports.add = async (ctx, next) => {
   let photos = ctx.request.body.photos || []
   let cover = ctx.request.body.cover
   let user_id = ctx.request.body.user_id
-  if (!title || title == '' || !user_id || user_id == '') {
+  let album_id = ctx.request.body.id
+  if (!user_id || user_id == '') {
     console.log('POST albums')
     ctx.body = {
       status: {
@@ -27,7 +30,7 @@ exports.add = async (ctx, next) => {
         message: '用户信息验证失败'
       }
     }
-  } else {
+  } else if (!album_id) {
     let albums = await Album.albumSave(title, song_id, photos, cover, user_id);
     ctx.body = {
       status: {
@@ -36,6 +39,14 @@ exports.add = async (ctx, next) => {
       },
       data: {
         id: 1
+      }
+    }
+  } else {
+    let albums = await Album.albumUpdate(title, album_id);
+    ctx.body = {
+      status: {
+        code: 1,
+        message: 'Success'
       }
     }
   }
@@ -64,4 +75,13 @@ exports.del = async (ctx, next) => {
       }
     }
   }
+}
+
+exports.uploadFile = async (ctx, next) => {
+  console.log('调用上传')
+  await upload.single('upfiles')(ctx, next).then(() => {
+    ctx.body = {
+      path: ctx.req.file
+    }
+  })
 }

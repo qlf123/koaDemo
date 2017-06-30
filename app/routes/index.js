@@ -1,7 +1,5 @@
 const router = require('koa-router')()
 const controller = require('../controllers');
-const multer = require('koa-multer');
-const upload = multer({ dest: 'uploads/' });
 
 router.get('/', async (ctx, next) => {
   await ctx.render('index', {
@@ -20,21 +18,26 @@ router.get('json', async (ctx, next) => {
 })
 // 获取图集列表
 router.get('albums', controller.album.list)
-// 新增图集
-router.post('albums', controller.album.add)
+// 新增图集 + 更新图集
+router.post('albums', controller.album.save)
 // 删除图集
 router.del('albums', controller.album.del)
 
 // 上传本地文件
-router.get('upload', (ctx, next) => {
-  ctx.body = '<form method="POST" action="/profile" enctype="multipart/form-data">请选择上传的文件：<input type="file" name="upfiles"> <input type="submit" value="OK"> </form>';
+router.get('upload', async (ctx, next) => {
+  await ctx.render('upload', {
+    postUrl: 'upload'
+  })
 });
-router.post('profile', upload.single('upfiles'),function (ctx, next){
-  ctx.body = {
-    path: ctx.req.file
-  }
-});
+router.post('upload', controller.album.uploadFile);
 
+// 上传文件到七牛云
+router.get('uploadQiniu', async (ctx, next) => {
+  await ctx.render('upload', {
+    postUrl: 'qiniu'
+  })
+});
+router.post('qiniu', controller.qiniu.uploadQiniu)
 
 // POST demo
 router.post('post', async (ctx,next) => {
