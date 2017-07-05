@@ -12,6 +12,18 @@ exports.list = async (ctx, next) => {
   let albums = await Album.albumList(page, count);
   ctx.body = albums;
 }
+exports.render = async (ctx, next) => {
+  let page = ctx.query.page || 1;
+  let count = ctx.query.count || 10;
+  let albums = await Album.albumList(page, count);
+  let totalPages = Math.ceil(albums.count / count);
+  await ctx.render('album/album', {
+    page: page,
+    count: count,
+    total_pages: totalPages,
+    date: albums.rows
+  })
+}
 
 exports.save = async (ctx, next) => {
   console.log(ctx)

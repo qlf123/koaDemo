@@ -1,6 +1,7 @@
 const router = require('koa-router')()
 const controller = require('../controllers');
 
+
 router.get('/', async (ctx, next) => {
   await ctx.render('index', {
     title: 'Hello Koa 2!'
@@ -17,11 +18,13 @@ router.get('json', async (ctx, next) => {
   }
 })
 // 获取图集列表
-router.get('albums', controller.album.list)
+router.get('api/albums', controller.album.list)
 // 新增图集 + 更新图集
-router.post('albums', controller.album.save)
+router.post('api/albums', controller.album.save)
 // 删除图集
-router.del('albums', controller.album.del)
+router.del('api/albums', controller.album.del)
+// 渲染图集页
+router.get('album', controller.album.render)
 
 // 上传本地文件
 router.get('upload', async (ctx, next) => {

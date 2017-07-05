@@ -6,6 +6,15 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const path = require('path')
+const koaNunjucks = require('koa-nunjucks-2');
+
+app.use(koaNunjucks({
+  ext: 'html',
+  path: path.join(__dirname, 'app/views'),
+  nunjucksConfig: {
+    trimBlocks: true
+  }
+}));
 
 // const index = require('./app/routes/index')
 // const users = require('./app/routes/users')
@@ -14,6 +23,7 @@ const multer = require('koa-multer'); // 文件上传
 
 // error handler
 onerror(app)
+
 
 const upload = multer({ dest: 'uploads/' });
 
@@ -26,7 +36,7 @@ app.use(logger())
 app.use(require('koa-static')(__dirname + '/public'))
 
 app.use(views(__dirname + '/app/views', {
-  extension: 'pug'
+  extension: 'njk'
 }))
 
 // logger

@@ -162,8 +162,3 @@ function uploadToQiniu(file, filename) {
     }
   });
 }
-
-function getSuffixName( fileName ) {
-  let nameList = fileName.split('.')
-  return nameList[nameList.length - 1]
-}

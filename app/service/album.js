@@ -4,7 +4,7 @@ const models = require('../models');
 exports.albumList = async(page, count) => {
   const ablums = await models.album.findAndCount({
     attributes: ['id', 'title', 'created_at', 'visit_count', 'thumbup_count', 'cover', 'max_pos'],
-    order: [['created_at', 'DESC']],
+    order: [['created_at', 'ASC']],
     // where: {user_id: user_id},
     include: [{
       model: models.photo,
@@ -15,9 +15,7 @@ exports.albumList = async(page, count) => {
     offset: count * (page - 1),
     limit: count
   });
-
   return ablums;
-
 };
 
 exports.albumSave = async(title, song_id, photos, cover, user_id) => {
