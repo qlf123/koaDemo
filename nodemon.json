@@ -1,10 +1,6 @@
 {
   "restartable": "rs",
   "verbose": false,
-  "env": {
-    "NODE_ENV": "production",
-    "PORT": "3000"
-  },
   "execMap": {
     "": "node",
     "js": "node"
