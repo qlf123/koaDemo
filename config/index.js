@@ -13,13 +13,9 @@ let configs = {
 };
 
 let config = configs[env];
-console.log("===============")
-console.log(process.env)
-console.log(env)
-console.log(config)
 if (config === undefined) {
   config = configLocal
 }
 
 module.exports = config
-//module.exports = Object.assign(config, configDefault);
+module.exports = Object.assign(config, configDefault);

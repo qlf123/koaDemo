@@ -3,7 +3,7 @@
   "verbose": false,
   "execMap": {
     "": "node",
-    "js": "node"
+    "js": "node --harmony"
   },
   "watch": [
     "app/",
