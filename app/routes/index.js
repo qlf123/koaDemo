@@ -1,12 +1,13 @@
 const router = require('koa-router')()
 const controller = require('../controllers');
 
-
+// 渲染登录页
 router.get('/', async (ctx, next) => {
-  await ctx.render('index', {
-    title: 'Hello Koa 2!'
+  await ctx.render('login', {
   })
 })
+// TODO:登录 POST
+router.post('login', controller.login.login)
 
 router.get('string', async (ctx, next) => {
   ctx.body = 'koa2 string'
@@ -17,6 +18,8 @@ router.get('json', async (ctx, next) => {
     title: 'koa2 json'
   }
 })
+
+
 // 获取图集列表
 router.get('api/albums', controller.album.list)
 // 新增图集 + 更新图集

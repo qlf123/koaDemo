@@ -15,6 +15,11 @@ const config = {
     sk: 'CGC-eriN03MfpJluhizyMFWMs0mfeyIpaHCuUTCi',
     bucket: 'hbb-growup-wechat',
     host: 'http://oibzvf99m.bkt.clouddn.com'
+  },
+
+  redis: {
+    host: '127.0.0.1',
+    port: 6379
   }
 }
 

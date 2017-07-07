@@ -1,0 +1,72 @@
+{% block style %}
+<style>
+	#warp {
+		width: 100%;
+		height: 100%;
+		background-image: url('/images/login_bg_2.png');
+		background-repeat: no-repeat;
+		background-size: cover;
+		overflow: hidden;
+	}
+	#login {
+		position: relative;
+		width: 360px;
+		height: 228px;
+		background: rgba(255,255,255,0.3);
+		margin: auto;
+		top: 50%;
+		margin-top: -114px;
+		box-sizing: border-box;
+		padding: 20px 30px 15px;
+	}
+	.form-control{
+		height: 40px;
+		border: 0;
+		box-sizing: border-box;
+		padding: 5px;
+		line-height: 30px;
+		width: 248px;
+	}
+	.control-label{
+		float: left;
+		font-size: 14px;
+		line-height: 40px;
+		margin-right: 10px;
+	}
+	.form-group{
+		margin-top: 25px;
+	}
+	#bnt-login{
+		width: 80px;
+		height: 33px;
+		text-align: center;
+		line-height: 33px;
+		color: #fff;
+		font-size: 14px;
+		float: right;
+		background: #00B7FF;
+		margin-top: 20px;
+		border: 0;
+	}
+</style>
+{% endblock %}
+
+{% extends "./template/index.html" %}
+
+{% block content %}
+<div id="warp">
+	<div id="login">
+		<form action="/login" method="POST">
+			<div class="form-group">
+				<label class="control-label">用户名</label>
+				<input class="form-control" name="user_name" id="user_name" type="text" autocomplete="off" placeholder="用户名" />
+			</div>
+			<div class="form-group">
+				<label class="control-label">密&nbsp;&nbsp;&nbsp;码</label>
+				<input class="form-control" name="password" id="password" type="password" autocomplete="off" placeholder="密码" />
+			</div>
+			<input type="submit" id="bnt-login" vlaue="登 录">
+		</form>
+	</div>
+</div>
+{% endblock %}

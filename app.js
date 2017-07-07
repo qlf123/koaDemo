@@ -7,6 +7,19 @@ const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const path = require('path')
 const koaNunjucks = require('koa-nunjucks-2');
+const session = require("koa-session2");
+const Store = require("./store.js");
+//const Store = require("koa-session2/libs/store");
+
+app.use(session({
+  key: "koa:sess",   //default "koa:sess"
+  store: new Store()
+}));
+
+//app.use(ctx => {
+//  let user = ctx.session.user;
+//  ctx.session.view = "login";
+//});
 
 app.use(koaNunjucks({
   ext: 'html',

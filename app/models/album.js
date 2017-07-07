@@ -75,5 +75,9 @@ module.exports = function (sequelize, Sequelize) {
     Album.hasMany(models.photo, {foreignKey: 'album_id'});
   };
 
+  Album.associate = function(models) {
+    Album.hasMany(models.admin, {foreignKey: 'id'});
+  };
+
   return Album;
 };
