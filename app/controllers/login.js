@@ -20,6 +20,7 @@ exports.login = async (ctx, next) => {
   } else {
     console.log('准备进入登录')
     let admin = await Admin.login(ctx)
+    ctx.body = admin
   }
   //let albums = await Album.albumList(page, count);
   //let totalPages = Math.ceil(albums.count / count);

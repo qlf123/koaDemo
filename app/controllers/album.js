@@ -12,6 +12,14 @@ exports.list = async (ctx, next) => {
   let albums = await Album.albumList(page, count);
   ctx.body = albums;
 }
+
+exports.albumAll = async (ctx, next) => {
+  let albums = await Album.albumAll(ctx);
+  ctx.body = albums;
+}
+
+
+
 exports.render = async (ctx, next) => {
   let page = ctx.query.page || 1;
   let count = ctx.query.count || 10;

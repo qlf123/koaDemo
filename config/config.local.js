@@ -7,7 +7,7 @@ const config = {
     username: 'root',
     password: '123456',
     host: 'localhost',
-    port: 3306
+    port: 8080
   },
 
   qiniu: {
@@ -15,12 +15,12 @@ const config = {
     sk: 'CGC-eriN03MfpJluhizyMFWMs0mfeyIpaHCuUTCi',
     bucket: 'hbb-growup-wechat',
     host: 'http://oibzvf99m.bkt.clouddn.com'
-  },
-
-  redis: {
-    host: '127.0.0.1',
-    port: 6379
   }
+
+  // redis: {
+  //  host: '127.0.0.1',
+  //  port: 6379
+  // }
 }
 
 module.exports = config;

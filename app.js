@@ -9,12 +9,15 @@ const path = require('path')
 const koaNunjucks = require('koa-nunjucks-2');
 const session = require("koa-session2");
 const Store = require("./store.js");
+const cors = require('koa2-cors');
+
+app.use(cors());
 //const Store = require("koa-session2/libs/store");
 
-app.use(session({
-  key: "koa:sess",   //default "koa:sess"
-  store: new Store()
-}));
+//app.use(session({
+//  key: "koa:sess",   //default "koa:sess"
+//  store: new Store()
+//}));
 
 //app.use(ctx => {
 //  let user = ctx.session.user;

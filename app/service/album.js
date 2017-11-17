@@ -1,6 +1,10 @@
 
 const models = require('../models');
 
+exports.albumAll = async() => {
+  return await models.album.findAll();
+}
+
 exports.albumList = async(page, count) => {
   const ablums = await models.album.findAndCount({
     attributes: ['id', 'title', 'created_at', 'visit_count', 'thumbup_count', 'cover', 'max_pos'],

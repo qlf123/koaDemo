@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/app/controllers/album.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/controllers/login.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/controllers/page.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/controllers/qiniu.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/routes/index.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/service/album.js" charset="UTF-8" />

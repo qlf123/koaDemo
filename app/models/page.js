@@ -1,9 +1,10 @@
 'use strict';
-module.exports = function(sequelize, DataTypes) {
-  var Page = sequelize.define('Page', {
-    name: DataTypes.STRING,
-    text: DataTypes.TEXT,
-    url: DataTypes.STRING
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, Sequelize) {
+  const Page = sequelize.define('pages', {
+    name: Sequelize.STRING,
+    text: Sequelize.TEXT,
+    url: Sequelize.STRING
   }, {
     classMethods: {
       associate: function(models) {
